@@ -16,7 +16,7 @@ public class Fireball : MonoBehaviour
         StartCoroutine("DestroyFireball");
         foreach (GameObject hazard in GameObject.FindGameObjectsWithTag("Hazard"))
         {
-            Physics.IgnoreCollision(hazard.GetComponent<Collider>(), GetComponent<Collider>());
+            Physics2D.IgnoreCollision(hazard.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         }
     }
 
