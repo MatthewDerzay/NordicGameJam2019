@@ -26,10 +26,6 @@ public class PlayerSound : MonoBehaviour
         }
 
     private void Awake() {
-        if(_instance != null)
-        {
-            Destroy(_instance.gameObject);
-        }
         _instance = this;
 
         source = GetComponent<AudioSource>();
