@@ -11,13 +11,13 @@ public class PlayerController : MonoBehaviour
     public LayerMask playerMask;
     private Rigidbody2D rb;
     public Animator animator;
-    private Renderer renderer;
+    private SpriteRenderer rend;
     private float movement;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        renderer = GetComponent<Renderer>();
+        rend = GetComponent<SpriteRenderer>();
         movement = 0;
         CheckIsGrounded();
     }
@@ -25,34 +25,51 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         movement = 0;
-        bool jump = false;
         CheckIsGrounded();
-        Debug.Log(isGrounded);
+
+        if(!isGrounded)
+        {
+            if(rb.velocity.y <= 0)
+            {
+                animator.SetBool("IsFalling", true);
+                animator.SetBool("IsJumping", false);
+            }
+        } else 
+        {
+            animator.SetBool("IsFalling", false);
+        }
 
         if(Input.GetKey(KeyCode.A))
         {
-            movement = -1;
+            movement = -speed;
+            rend.flipX = true;
         }
 
         if(Input.GetKey(KeyCode.D))
         {
-            movement = 1;
+            movement = speed;
+            rend.flipX = false;
         }
 
-        if(Input.GetKey(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space))
         {
-            jump = true;
-            animator.SetBool("IsJumping", true);
+            if(isGrounded)
+            {
+                animator.SetBool("IsJumping", true);
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            }
         }
 
         animator.SetFloat("Speed", Mathf.Abs(movement * speed));
-        rb.velocity = new Vector2(movement, 0) * speed;
+        rb.velocity = new Vector2(movement, rb.velocity.y);
     }
 
     void CheckIsGrounded()
     {
-        isGrounded = Physics2D.Linecast(transform.position, new Vector2(transform.position.x, transform.position.y - 1), playerMask) || Physics2D.Linecast(transform.position, new Vector2(transform.position.x, transform.position.y - 1), playerMask);
-        Debug.Log(renderer.bounds.size);
+        float leftSide = transform.position.x - rend.bounds.size.x/2;
+        float rightSide = transform.position.x + rend.bounds.size.x/2;
+        float bottom = transform.position.y - rend.bounds.size.y/2 - 0.1f;
+        isGrounded = Physics2D.Linecast(new Vector2(leftSide, transform.position.y), new Vector2(leftSide, bottom), playerMask) || Physics2D.Linecast(new Vector2(rightSide, transform.position.y), new Vector2(rightSide, bottom), playerMask);
     }
 
     public void OnLanding()
