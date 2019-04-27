@@ -12,18 +12,27 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     public Animator animator;
     private SpriteRenderer rend;
+    private PlayerSpawner spawner;
     private float movement;
+    private bool control;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rend = GetComponent<SpriteRenderer>();
+        spawner = GameObject.Find("PlayerSpawn").GetComponent<PlayerSpawner>();
         movement = 0;
+        control = true;
         CheckIsGrounded();
     }
 
     void FixedUpdate()
     {
+        if(!control)
+        {
+            return;
+        }
+
         movement = 0;
         CheckIsGrounded();
 
@@ -72,9 +81,18 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics2D.Linecast(new Vector2(leftSide, transform.position.y), new Vector2(leftSide, bottom), playerMask) || Physics2D.Linecast(new Vector2(rightSide, transform.position.y), new Vector2(rightSide, bottom), playerMask);
     }
 
-    public void OnLanding()
+    public void Death()
     {
-        animator.SetBool("IsJumping", false);
-        animator.SetBool("IsFalling", false);
+        StartCoroutine(DeathSequence());
+    }
+
+    public IEnumerator DeathSequence()
+    {
+        control = false;
+        animator.enabled = false;
+        yield return new WaitForSeconds(0.5f);
+        Destroy(gameObject);
+        spawner.Spawn();
+        control = true;
     }
 }
