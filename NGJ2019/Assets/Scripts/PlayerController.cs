@@ -95,6 +95,15 @@ public class PlayerController : MonoBehaviour
     {
         if(!killed)
         {
+            boulderSpawners = GameObject.FindGameObjectsWithTag("BoulderSpawner");
+            if(boulderSpawners != null)
+            {
+                foreach(GameObject bs in boulderSpawners)
+                {
+                    bs.GetComponent<BoulderSpawner>().ResetCounter();
+                }
+            }
+
             PlayerSound.instance.PlayOof();
             GameManager.instance.AddDeath();
             killed = true;
