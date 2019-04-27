@@ -111,4 +111,11 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(4f);
         Destroy(gameObject);
     }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.CompareTag("Goal"))
+        {
+            GameManager.instance.NextScene();
+        }
+    }
 }
