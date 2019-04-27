@@ -29,4 +29,9 @@ public class BoulderSpawner : MonoBehaviour
             }
         }   
     }
+
+    public void ResetCounter()
+    {
+        counter = 0;
+    }
 }
