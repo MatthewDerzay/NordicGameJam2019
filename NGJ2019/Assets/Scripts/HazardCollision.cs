@@ -15,13 +15,13 @@ public class HazardCollision : MonoBehaviour
         if(other.gameObject.CompareTag("Hazard"))
         {
             Destroy(other.gameObject);
-            // reduce score
+            GameManager.instance.ReduceScore();
             controller.Death();
         }
         if (other.gameObject.CompareTag("GroupHazard"))
         {
             Destroy(other.transform.parent.gameObject);
-            // reduce score
+            GameManager.instance.ReduceScore();
             controller.Death();
         }
     }
