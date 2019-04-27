@@ -39,4 +39,14 @@ public class GameManager : MonoBehaviour
         deaths++;
         Debug.Log(deaths);
     }
+
+    public void ResetDeaths()
+    {
+        deaths = 0;
+    }
+
+    public int GetDeaths()
+    {
+        return deaths;
+    }
 }
