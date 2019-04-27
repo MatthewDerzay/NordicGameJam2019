@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6064429044320303420}
   - component: {fileID: 2505796102680166740}
   - component: {fileID: 5437413248260873142}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: King
   m_TagString: Player
   m_Icon: {fileID: 0}
