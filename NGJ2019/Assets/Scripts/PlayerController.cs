@@ -66,8 +66,8 @@ public class PlayerController : MonoBehaviour
 
     void CheckIsGrounded()
     {
-        float leftSide = transform.position.x - rend.bounds.size.x/2;
-        float rightSide = transform.position.x + rend.bounds.size.x/2;
+        float leftSide = transform.position.x - rend.bounds.size.x/2 + .05f;
+        float rightSide = transform.position.x + rend.bounds.size.x/2 - .05f;
         float bottom = transform.position.y - rend.bounds.size.y/2 - 0.1f;
         isGrounded = Physics2D.Linecast(new Vector2(leftSide, transform.position.y), new Vector2(leftSide, bottom), playerMask) || Physics2D.Linecast(new Vector2(rightSide, transform.position.y), new Vector2(rightSide, bottom), playerMask);
     }
