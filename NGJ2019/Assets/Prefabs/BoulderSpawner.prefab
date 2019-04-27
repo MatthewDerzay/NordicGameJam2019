@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1728568519333178241}
   m_Layer: 0
   m_Name: BoulderSpawner
-  m_TagString: Untagged
+  m_TagString: BoulderSpawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
