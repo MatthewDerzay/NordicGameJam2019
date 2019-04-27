@@ -5,10 +5,10 @@ using UnityEngine;
 public class HazardCollision : MonoBehaviour
 {
 
-    private PlayerSpawner spawner;
+    private PlayerController controller;
 
     private void Start() {
-        spawner = GameObject.Find("PlayerSpawn").GetComponent<PlayerSpawner>();
+        controller = GetComponent<PlayerController>();
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
@@ -16,9 +16,7 @@ public class HazardCollision : MonoBehaviour
         {
             Destroy(other.gameObject);
             // reduce score
-            // death animation
-            Destroy(gameObject);
-            spawner.Spawn();
+            controller.Death();
         }
         if(other.gameObject.CompareTag("GroupHazard"))
         {
