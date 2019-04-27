@@ -12,10 +12,13 @@ public class HazardCollision : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
-        Destroy(other.gameObject);
-        // reduce score
-        // death animation
-        Destroy(gameObject);
-        spawner.Spawn();
+        if(other.gameObject.CompareTag("Hazard"))
+        {
+            Destroy(other.gameObject);
+            // reduce score
+            // death animation
+            Destroy(gameObject);
+            spawner.Spawn();
+        }
     }
 }
