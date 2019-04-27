@@ -18,8 +18,7 @@ public class Boulder : MonoBehaviour
 
     IEnumerator DestroyBoulder()
     {
-        Debug.Log("Coroutine");
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(3);
         Destroy(gameObject);
     }
 
