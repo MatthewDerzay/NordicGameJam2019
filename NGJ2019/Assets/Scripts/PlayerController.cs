@@ -95,27 +95,27 @@ public class PlayerController : MonoBehaviour
         if(!killed)
         {
             PlayerSound.instance.PlayOof();
+            GameManager.instance.AddDeath();
+            killed = true;
+            control = false;
+            animator.enabled = false;
+            rb.freezeRotation = false;
+            polyCollider.enabled = false;
+            rb.AddTorque(80);
+            rb.gravityScale = 5;
+            rb.velocity = new Vector2(0, jumpForce * 4);
+            yield return new WaitForSeconds(1f);
+            spawner.Spawn();
+            control = true;
+            yield return new WaitForSeconds(4f);
+            Destroy(gameObject);
         }
-
-        killed = true;
-        control = false;
-        animator.enabled = false;
-        rb.freezeRotation = false;
-        polyCollider.enabled = false;
-        rb.AddTorque(80);
-        rb.gravityScale = 5;
-        rb.velocity = new Vector2(0, jumpForce * 4);
-        yield return new WaitForSeconds(1f);
-        spawner.Spawn();
-        control = true;
-        yield return new WaitForSeconds(4f);
-        Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("Goal"))
         {
-            GameManager.instance.NextScene();
+            LevelManager.instance.NextScene();
         }
     }
 }

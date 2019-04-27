@@ -5,9 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    private PlayerSpawner spawner;
-    public string nextScene;
-    private int score;
+    private int deaths = 0;
 
     private static GameManager _instance;
 
@@ -28,31 +26,17 @@ public class GameManager : MonoBehaviour
         }
 
     private void Awake() {
-        if(_instance != null)
+        if(_instance == null)
         {
-            Destroy(_instance.gameObject);
+            _instance = this;
         }
-        _instance = this;
         DontDestroyOnLoad(this.gameObject);
+        Debug.Log(deaths);
     }
 
-    private void Start() {
-        spawner = GameObject.Find("PlayerSpawn").GetComponent<PlayerSpawner>();
-        spawner.Spawn();
-    }
-
-    public void NextScene()
+    public void AddDeath()
     {
-        SceneManager.LoadScene(nextScene);
-    }
-
-    public void SetLevelScore()
-    {
-        //SceneManager.sceneLoaded;
-    }
-
-    public void ReduceScore()
-    {
-        score--;
+        deaths++;
+        Debug.Log(deaths);
     }
 }
