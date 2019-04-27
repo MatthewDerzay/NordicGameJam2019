@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private PolygonCollider2D polyCollider;
     private float movement;
     private bool control;
+    private bool killed;
 
     void Start()
     {
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour
         movement = 0;
         control = true;
         CheckIsGrounded();
+        killed = false;
     }
 
     void FixedUpdate()
@@ -90,6 +92,12 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator DeathSequence()
     {
+        if(!killed)
+        {
+            PlayerSound.instance.PlayOof();
+        }
+
+        killed = true;
         control = false;
         animator.enabled = false;
         rb.freezeRotation = false;
