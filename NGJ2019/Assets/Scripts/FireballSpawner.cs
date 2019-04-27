@@ -17,7 +17,8 @@ public class FireballSpawner : MonoBehaviour
 
     public void SpawnObject()
     {
-        Instantiate(fireball, transform.position, transform.rotation);
+        GameObject go = Instantiate(fireball, transform.position, transform.rotation);
+        go.transform.parent = gameObject.transform;
         if (stopSpawning)
         {
             CancelInvoke("SpawnObject");
