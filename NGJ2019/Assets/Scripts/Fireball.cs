@@ -14,6 +14,10 @@ public class Fireball : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         StartCoroutine("DestroyFireball");
+        foreach (GameObject hazard in GameObject.FindGameObjectsWithTag("Hazard"))
+        {
+            Physics.IgnoreCollision(hazard.GetComponent<Collider>(), GetComponent<Collider>());
+        }
     }
 
     void FixedUpdate()
