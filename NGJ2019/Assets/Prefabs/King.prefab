@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2123026392143511914}
   - component: {fileID: 2123026392143511913}
   - component: {fileID: 2123026392143511916}
+  - component: {fileID: 9173399854413440845}
   - component: {fileID: 2123026392143511915}
   m_Layer: 0
   m_Name: King
@@ -29,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2123026392143511830}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.34, y: -1.87, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -148,6 +149,18 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   animator: {fileID: 2123026392143511915}
+--- !u!114 &9173399854413440845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123026392143511830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08971777dc2864b98b9e8c59b236cb60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &2123026392143511915
 Animator:
   serializedVersion: 3

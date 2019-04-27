@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
             rend.flipX = false;
         }
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKey(KeyCode.Space))
         {
             if(isGrounded)
             {
