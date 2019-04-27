@@ -18,13 +18,5 @@ public class HazardCollision : MonoBehaviour
             // reduce score
             controller.Death();
         }
-        if(other.gameObject.CompareTag("GroupHazard"))
-        {
-            Destroy(other.transform.parent.gameObject);
-            // reduce score
-            // death animation
-            Destroy(gameObject);
-            spawner.Spawn();
-        }
     }
 }
