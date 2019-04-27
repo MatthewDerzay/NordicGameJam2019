@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private float movement;
     private bool control;
     private bool killed;
+    private GameObject[] boulderSpawners;
 
     void Start()
     {
