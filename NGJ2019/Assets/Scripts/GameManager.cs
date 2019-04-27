@@ -31,13 +31,13 @@ public class GameManager : MonoBehaviour
             _instance = this;
         }
         DontDestroyOnLoad(this.gameObject);
-        Debug.Log(deaths);
+        UI.instance.UpdateDeaths(deaths);
     }
 
     public void AddDeath()
     {
         deaths++;
-        Debug.Log(deaths);
+        UI.instance.UpdateDeaths(deaths);
     }
 
     public void ResetDeaths()

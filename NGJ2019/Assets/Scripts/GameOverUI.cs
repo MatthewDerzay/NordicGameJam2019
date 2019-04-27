@@ -10,7 +10,15 @@ public class GameOverUI : MonoBehaviour
 
     void Start()
     {
-        text.text = "You Died " + GameManager.instance.GetDeaths() + " Times";
+        int deaths = GameManager.instance.GetDeaths();
+
+        if(deaths == 1)
+        {
+            text.text = "You Died " + deaths.ToString() + " Time";
+        } else {
+            text.text = "You Died " + deaths.ToString() + " Times";
+        }
+        
         GameManager.instance.ResetDeaths();
     }
 }
