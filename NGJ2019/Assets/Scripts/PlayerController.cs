@@ -100,6 +100,10 @@ public class PlayerController : MonoBehaviour
             {
                 foreach(GameObject bs in boulderSpawners)
                 {
+                    foreach(Transform child in bs.transform)
+                    {
+                        GameObject.Destroy(child.gameObject);
+                    }
                     bs.GetComponent<BoulderSpawner>().ResetCounter();
                 }
             }

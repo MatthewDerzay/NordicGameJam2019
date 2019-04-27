@@ -7,7 +7,7 @@ public class Boulder : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine("DestroyBoulder");
+        
     }
 
     // Update is called once per frame
@@ -16,17 +16,11 @@ public class Boulder : MonoBehaviour
      
     }
 
-    IEnumerator DestroyBoulder()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        yield return new WaitForSeconds(3);
-        Destroy(gameObject);
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            transform.gameObject.tag = "Untagged";
+        }
     }
-
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-        //if (collision.gameObject.CompareTag("Ground"))
-        //{
-
-        //}
-    //}
 }
