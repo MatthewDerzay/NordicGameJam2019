@@ -264,6 +264,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6480549648748135361, guid: a955887eb77474358a9b0a98741d35fe,
+        type: 3}
+      propertyPath: nextScene
+      value: Third Level
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a955887eb77474358a9b0a98741d35fe, type: 3}
 --- !u!1001 &524021923
@@ -5708,7 +5713,7 @@ Transform:
   - {fileID: 52323847}
   - {fileID: 1843076226}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1912562234
 GameObject:
