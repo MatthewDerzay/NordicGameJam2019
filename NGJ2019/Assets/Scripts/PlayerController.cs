@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
     private SpriteRenderer rend;
     private PlayerSpawner spawner;
+    private PolygonCollider2D polyCollider;
     private float movement;
     private bool control;
 
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rend = GetComponent<SpriteRenderer>();
         spawner = GameObject.Find("PlayerSpawn").GetComponent<PlayerSpawner>();
+        polyCollider = GetComponent<PolygonCollider2D>();
         movement = 0;
         control = true;
         CheckIsGrounded();
@@ -90,9 +92,15 @@ public class PlayerController : MonoBehaviour
     {
         control = false;
         animator.enabled = false;
-        yield return new WaitForSeconds(0.5f);
-        Destroy(gameObject);
+        rb.freezeRotation = false;
+        polyCollider.enabled = false;
+        rb.AddTorque(80);
+        rb.gravityScale = 5;
+        rb.velocity = new Vector2(0, jumpForce * 4);
+        yield return new WaitForSeconds(1f);
         spawner.Spawn();
         control = true;
+        yield return new WaitForSeconds(4f);
+        Destroy(gameObject);
     }
 }
