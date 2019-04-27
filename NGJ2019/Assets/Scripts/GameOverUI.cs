@@ -7,6 +7,8 @@ public class GameOverUI : MonoBehaviour
 {
 
     public Text text;
+    public Image image;
+    public Sprite[] images;
 
     void Start()
     {
@@ -17,6 +19,14 @@ public class GameOverUI : MonoBehaviour
             text.text = "You Died " + deaths.ToString() + " Time";
         } else {
             text.text = "You Died " + deaths.ToString() + " Times";
+        }
+
+        if(deaths > 2)
+        {
+            image.sprite = images[0];
+        } else
+        {
+            image.sprite = images[1];
         }
         
         GameManager.instance.ResetDeaths();

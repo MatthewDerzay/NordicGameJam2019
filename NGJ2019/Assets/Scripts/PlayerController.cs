@@ -99,6 +99,7 @@ public class PlayerController : MonoBehaviour
             killed = true;
             control = false;
             animator.enabled = false;
+            rend.sortingOrder = 1;
             rb.freezeRotation = false;
             polyCollider.enabled = false;
             rb.AddTorque(80);
