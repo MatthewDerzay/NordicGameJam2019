@@ -38,7 +38,7 @@ public class Fireball : MonoBehaviour
 
     IEnumerator DestroyFireballOnCollision()
     {
-        yield return new WaitForSeconds(.75f);
+        yield return new WaitForSeconds(.5f);
         Destroy(gameObject);
     }
 }
