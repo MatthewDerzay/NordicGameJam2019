@@ -267,7 +267,7 @@ PrefabInstance:
     - target: {fileID: 6480549648748135361, guid: a955887eb77474358a9b0a98741d35fe,
         type: 3}
       propertyPath: nextScene
-      value: GameOver
+      value: Third Level
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a955887eb77474358a9b0a98741d35fe, type: 3}
@@ -812,7 +812,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -2
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 5.9, y: 5.9, z: 0}
   m_MaxChunkCount: 16
