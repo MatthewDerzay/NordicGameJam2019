@@ -21,9 +21,10 @@ public class GameOverUI : MonoBehaviour
             text.text = "You Died " + deaths.ToString() + " Times";
         }
 
-        if(deaths > 2)
+        if(deaths > 20)
         {
             image.sprite = images[0];
+            text.color = new Color(255, 255, 255, 100);
         } else
         {
             image.sprite = images[1];
