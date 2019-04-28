@@ -21,6 +21,7 @@ public class Boulder : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             transform.gameObject.tag = "Untagged";
+            gameObject.layer = 8;
         }
     }
 }

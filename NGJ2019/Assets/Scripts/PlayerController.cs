@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
             rb.AddTorque(80);
             rb.gravityScale = 5;
             rb.velocity = new Vector2(0, jumpForce * 4);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
             spawner.Spawn();
             control = true;
             yield return new WaitForSeconds(4f);

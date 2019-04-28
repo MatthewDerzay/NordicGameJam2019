@@ -42,7 +42,10 @@ public class Fireball : MonoBehaviour
 
     IEnumerator DestroyFireballOnCollision()
     {
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(.15f);
+        gameObject.tag = "Untagged";
+        Physics2D.IgnoreCollision(GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        yield return new WaitForSeconds(.35f);
         Destroy(gameObject);
     }
 }
